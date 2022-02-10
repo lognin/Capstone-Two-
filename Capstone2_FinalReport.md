@@ -44,7 +44,7 @@ The first model, comparing high stringency countries against average stringency 
 ![Model 1 Results](Model1Results.png)
 
 
-The second model, comparing a low stringency treatment group of countries and an average stringency control group, fared somewhat better. It too showed an expected decrease in excess mortality in the treatment group, with an coefficient of around -3917. This result also fails to reach statistical significance but comes much closer.
+The second model, comparing a low stringency treatment group of countries and an average stringency control group, fared somewhat better. It too showed an expected decrease in excess mortality in the treatment group, with a coefficient of around -3917. This result also fails to reach statistical significance but comes much closer.
 
 >* The coef, 0.025, and 0.975 confidence for the variable "did" is primarily what were interested in here.
 
