@@ -10,13 +10,11 @@ Beginning January 1st 2020, Oxford began collecting systematic information on po
 
 > * [Oxford COVID-19 Government Response Tracker](https://www.bsg.ox.ac.uk/research/research-projects/covid-19-government-response-tracker)
 
-COVID-19 death numbers have been difficult to accurately track for a wide variety of reasons (improper accounting, lack of resources, differences in accounting methods, etc). However, a more reliable method for estimating the total toll COVID-19 has taken in terms of lives lost is excess mortality - the number of deaths from all causes measured during a crisis, above what could be observed under ‘normal’ conditions. However, not all countries officially track or report excess mortality. Fortunately, the Economist Intelligence Unit has created a country by country estimate, which can be found here:
+COVID-19 death numbers have been difficult to accurately track for a wide variety of reasons (improper accounting, lack of resources, differences in accounting methods, etc). A more reliable method for estimating the total toll COVID-19 has taken in terms of lives lost is excess mortality - the number of deaths from all causes measured during a crisis, above what could be observed under ‘normal’ conditions. However a relatively small number of countries officially track and report excess mortality. Fortunately the Economist Intelligence Unit has created a country by country estimate, which can be found here:
 
 > * [Economist Excess Mortality Tracker](https://www.economist.com/graphic-detail/coronavirus-excess-deaths-tracker)
 
 ## 2. Data Cleaning 
-
-In a collaborative-filtering system there are only three columns that matter to apply the machine learning algorithms: the user, the item, and the explicit rating (see the example matrix above). I also had to clean & normalize all the reference information (location, difficulty grade, etc.) to the route so that my user could get a useful and informative recommendation.
 
 * **Problem 1:** These data sets use a different name and date scheme to represent countries and entries. **Solution:** Convert the iso3c used by the Economist data set into the plain name country format of the Oxford data. Then, apply a standardized date and time format across both datasets.
 
@@ -33,7 +31,7 @@ Ranking countries on stringency and excess mortality gave a brief overview of ho
 
 ## 4. Pre-processing
 
-After looking into various methods to determine causation, and after consultation with my mentor, I decided that a diff-in-diff method would be an appropriate method. Accordingly, I developed aggregate scores for each country on the two metrics being considered (stringency and excess mortality). Somewhat unconventionally, I decided to create two distinct diff-in-diff models, one comparing the average against the most stringent countries, and one comparing the average against the least stringent. Accordingly, I split the countries and their scores into 3 quantiles based on stringency (high, middle, and low).
+After looking into various methods to determine causation, and after consultation with my mentor, I decided that a diff-in-diff method would be appropriate. Accordingly, I developed aggregate scores for each country on the two metrics being considered (stringency and excess mortality). I decided to create two distinct diff-in-diff models. One comparing the average against the most stringent countries and one comparing the average against the least stringent. I split the countries and their scores into 3 quantiles based on stringency (high, middle, and low).
 
 ## 5. Modeling
 
@@ -46,7 +44,7 @@ The first model, comparing high stringency countries against average stringency 
 ![Model 1 Results](Model1Results.png)
 
 
-The second model, comparing a low stringency treatment group of countries and an average stringency control group, fared somewhat better. It too showed an expected decrease in excess mortality in the treatment group, with an coefficient of around -3917. This result also fails to reach statistical significance, but comes much closer.
+The second model, comparing a low stringency treatment group of countries and an average stringency control group, fared somewhat better. It too showed an expected decrease in excess mortality in the treatment group, with an coefficient of around -3917. This result also fails to reach statistical significance but comes much closer.
 
 >* The coef, 0.025, and 0.975 confidence for the variable "did" is primarily what were interested in here.
 
@@ -55,9 +53,9 @@ The second model, comparing a low stringency treatment group of countries and an
 
 ## 6. Analysis
 
-With neither of the results reaching statistical significance, it is important not to put too much weight of the effect sizes found in the models. This is especially true in the case of high stringency, where the statistical power is much lower and the confidence interval ranges from a decrease in excess deaths to an increase. In the lower stringency group, we're given a somewhat clearer picture. At both ends of our confidence interval, we're seeing and overall decrease in excess mortality. While the result was not statistically significant, only slightly larger n would be required to reach significance. 
+With neither of the results reaching statistical significance, it is important not to put too much weight of the effect sizes found in the models. This is especially true in the case of high stringency, where the statistical power is much lower and the confidence interval ranges from a decrease in excess deaths to an increase. In the lower stringency group we're given a somewhat clearer picture. At both ends of our confidence interval we observe and overall decrease in excess mortality. While the result was not statistically significant, only slightly larger n would be required to reach significance. 
 
-So, based on these results, I'm deeply uncertain whether high levels of stringency made positive or negative impacts on excess mortality during the course of the pandemic. I am lead to believe, however, that countries with a lower stringency than the average saw lower excess mortality rates than their peers.
+Based on these results I'm deeply uncertain whether high levels of stringency made positive or negative impacts on excess mortality during the course of the pandemic. I am lead to believe, however, that countries with a lower stringency than the average saw lower excess mortality rates than their peers.
 
 It's also important that many features of the pandemic that were not explored here could have had large effects on this overall picture. Perhaps countries with milder outbreaks maintained a lower level of stringency, and the effect sizes we see are actually better explained by levels of infection within a country influencing government policy - rather than government policy influencing outcomes.
 
@@ -65,8 +63,8 @@ It's also important that many features of the pandemic that were not explored he
 
 Since neither of these results were statistically significant, future analysis that increased the number of observations could potentially use a similar method to gain more confidence in the result. This could be done by in a variety of ways, perhaps by breaking countries down into smaller units (like states, regions, or counties). 
 
-As mentioned in the analysis, a study that looks this problem from the opposite direction could yield interesting results. Perhaps the level of excess mortality actually influences government policy rather than the reverse and stringency could be better though of as a by product of pandemic severity in a given country rather than determining factor.
-
+As mentioned above, a study that looks this problem from the opposite direction could yield interesting results. Perhaps the level of excess mortality actually influences government policy rather than the reverse and stringency could be better though of as a byproduct of pandemic severity in a given country rather than determining factor.
+ 
 There are also many factors not examined here that could have more explanatory power on determining the level of excess mortality within a given country. A non-exhaustive list would include: GDP per capita, GINI coefficient, geographic factors, level of health infrastructure, experience with the SARS epidemic, and many others.
 
 
