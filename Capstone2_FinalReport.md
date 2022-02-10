@@ -43,64 +43,14 @@ The first model, comparing high stringency countries against average stringency 
 
 >* The coef, 0.025, and 0.975 confidence for the variable "did" is primarily what were interested in here.
 
-                            OLS Regression Results                            
-==============================================================================
-Dep. Variable:        ExcessMortality   R-squared:                       0.417
-Model:                            OLS   Adj. R-squared:                  0.410
-Method:                 Least Squares   F-statistic:                     54.87
-Date:                Tue, 01 Feb 2022   Prob (F-statistic):           8.67e-27
-Time:                        13:58:09   Log-Likelihood:                -2352.8
-No. Observations:                 234   AIC:                             4714.
-Df Residuals:                     230   BIC:                             4727.
-Df Model:                           3                                         
-Covariance Type:            nonrobust                                         
-==============================================================================
-                 coef    std err          t      P>|t|      [0.025      0.975]
-------------------------------------------------------------------------------
-const       7.336e-14    745.526   9.84e-17      1.000   -1468.934    1468.934
-Treated    -1.626e-12   1049.856  -1.55e-15      1.000   -2068.565    2068.565
-Time        9906.9846   1054.333      9.396      0.000    7829.599     1.2e+04
-did         -792.6603   1484.721     -0.534      0.594   -3718.052    2132.732
-==============================================================================
-Omnibus:                       58.478   Durbin-Watson:                   0.081
-Prob(Omnibus):                  0.000   Jarque-Bera (JB):              222.586
-Skew:                           0.963   Prob(JB):                     4.63e-49
-Kurtosis:                       7.373   Cond. No.                         6.88
-==============================================================================
-Notes:
-[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
+![Model 1 Results](Model1Results.png)
 
 
 The second model, comparing a low stringency treatment group of countries and an average stringency control group, fared somewhat better. It too showed an expected decrease in excess mortality in the treatment group, with an coefficient of around -3917. This result also fails to reach statistical significance, but comes much closer.
 
 >* The coef, 0.025, and 0.975 confidence for the variable "did" is primarily what were interested in here.
 
-OLS Regression Results                            
-==============================================================================
-Dep. Variable:        ExcessMortality   R-squared:                       0.324
-Model:                            OLS   Adj. R-squared:                  0.316
-Method:                 Least Squares   F-statistic:                     36.81
-Date:                Tue, 01 Feb 2022   Prob (F-statistic):           1.82e-19
-Time:                        13:58:09   Log-Likelihood:                -2370.2
-No. Observations:                 234   AIC:                             4748.
-Df Residuals:                     230   BIC:                             4762.
-Df Model:                           3                                         
-Covariance Type:            nonrobust                                         
-==============================================================================
-                 coef    std err          t      P>|t|      [0.025      0.975]
-------------------------------------------------------------------------------
-const      -1.399e-12    802.962  -1.74e-15      1.000   -1582.101    1582.101
-Treated    -4.006e-12   1130.738  -3.54e-15      1.000   -2227.928    2227.928
-Time        9906.9846   1135.559      8.724      0.000    7669.556    1.21e+04
-did        -3916.8236   1599.104     -2.449      0.015   -7067.590    -766.057
-==============================================================================
-Omnibus:                       58.627   Durbin-Watson:                   0.154
-Prob(Omnibus):                  0.000   Jarque-Bera (JB):              166.082
-Skew:                           1.077   Prob(JB):                     8.62e-37
-Kurtosis:                       6.520   Cond. No.                         6.88
-==============================================================================
-Notes:
-[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
+![Model 2 Results](Model2Results.png)
 
 
 ## 6. Analysis
